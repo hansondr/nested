@@ -1,0 +1,10 @@
+<h1><%= @career.title %></h1>
+<h2>Located in <%= @career.location %></h2>
+
+<p><%= @career.description %></p>
+
+<%= link_to 'Apply Online Now!', new_career_job_application_path(@career) %>
+
+<br/>
+
+<%= link_to 'Delete this Career', career_path(@career), method: :delete %>

@@ -1,0 +1,41 @@
+<h1><%= @job_application.career.title %> Application</h1>
+
+<% if @job_application.errors.any? %>
+  <ul>
+    <% @job_application.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@job_application.career, @job_application] do |f| %>
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <h3>Previous Employment</h3>
+
+  <%= f.fields_for :previous_jobs do |ff| %>
+    <h4>Position <%= ff.index + 1 %></h4>
+
+    <% @job_application.previous_jobs[ff.index].errors.full_messages.each do |msg| %>
+      <div><%= msg %></div>
+    <% end %>
+
+    <%= ff.label :title %>
+    <%= ff.text_field :title %>
+
+    <%= ff.label :start_on %>
+    <%= ff.date_field :start_on %>
+
+    <%= ff.label :leave_on %>
+    <%= ff.date_field :leave_on %>
+
+    <%= ff.label :leave_reason %>
+    <%= ff.text_field :leave_reason %>
+  <% end %>
+
+  <%= f.submit 'Apply!' %>
+<% end %>

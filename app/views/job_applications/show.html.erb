@@ -1,0 +1,12 @@
+<h1><%= @job_application.career.title %> Application</h1>
+
+<h2>Applicant Information</h2>
+
+<div id="applicant-bio">
+  <span><%= @job_application.full_name %></span>
+  <span><%= @job_application.email %></span>
+</div>
+
+<h3>Previous Work History</h3>
+
+<%= link_to 'Back', job_applications_path %>
